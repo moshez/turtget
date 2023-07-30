@@ -29,38 +29,49 @@ class _WorldDetails:
     turtle: Turtle
     
     @classmethod
-    def from_size(cls, size):
+    def from_size(cls, size: Tuple[int, int]) -> _WorldDetails:
         return cls(
-            img = Image.new("RGBA", self.size, color=(255,255,255)),
+            img = Image.new("RGBA", size, color=(255,255,255)),
             draw = ImageDraw.Draw(self.img),
             turtle = Turtle(),
         )
+
             
 @dataclasses.dataclass
 class World:
     size: Tuple[int, int]
     
+    # In general, private methods are an anti-pattern.
+    # In this case:
+    # * This is barely a method
+    # * It could be refactored into a `ResettableDetails`
+    #   class, but the benefit for the extra complexity
+    #   would be minimal.
     @functools.cached_property
-    def details(self) -> _WorldDetails:
+    def _details(self) -> _WorldDetails:
         return _WorldDetails.from_size(self.size)
     
-    @property
-    def turtle(self):
-        return self.details.turtle
-
-    def reset(self):
-        with contextlib.suppress(AttributeError):
-            del self.details
+    @functools.cached_property
+    def output(self) -> ipywidgets.Output:
+        return ipywidgets.Output()
     
-    def redraw(self):
-        img = self.details.img.copy()
+    @property
+    def turtle(self) -> Turtle:
+        return self._details.turtle
+
+    def reset(self) -> None:
+        with contextlib.suppress(AttributeError):
+            del self._details
+    
+    def redraw(self) -> None:
+        img = self._details.img.copy()
         self.turtle.draw_icon(img)
         self.output.clear_output(wait=True)
         with self.output:
             display(ImageHTML(img))
 
-    def move(self, stride):
+    def move(self, stride: int) -> None:
         line_params = self.turtle.move(stride, self.size)
         if line_params is None:
             return
-        self.details.draw.line(line_params, width=2, fill=(0,0,0))
+        self._details.draw.line(line_params, width=2, fill=(0,0,0))
