@@ -6,28 +6,96 @@
 #
 alabaster==0.7.13
     # via sphinx
+asttokens==2.2.1
+    # via stack-data
 babel==2.12.1
     # via sphinx
+backcall==0.2.0
+    # via ipython
 certifi==2023.7.22
     # via requests
 charset-normalizer==3.2.0
     # via requests
+comm==0.1.3
+    # via ipykernel
+debugpy==1.6.7
+    # via ipykernel
+decorator==5.1.1
+    # via ipython
 docutils==0.20.1
     # via sphinx
+executing==1.2.0
+    # via stack-data
 idna==3.4
     # via requests
 imagesize==1.4.1
     # via sphinx
+ipykernel==6.25.0
+    # via ipywidgets
+ipython==8.14.0
+    # via
+    #   ipykernel
+    #   ipywidgets
+ipywidgets==8.0.7
+    # via turtget (pyproject.toml)
+jedi==0.19.0
+    # via ipython
 jinja2==3.1.2
     # via sphinx
+jupyter-client==8.3.0
+    # via ipykernel
+jupyter-core==5.3.1
+    # via
+    #   ipykernel
+    #   jupyter-client
+jupyterlab-widgets==3.0.8
+    # via ipywidgets
 markupsafe==2.1.3
     # via jinja2
+matplotlib-inline==0.1.6
+    # via
+    #   ipykernel
+    #   ipython
+nest-asyncio==1.5.7
+    # via ipykernel
 packaging==23.1
-    # via sphinx
+    # via
+    #   ipykernel
+    #   sphinx
+parso==0.8.3
+    # via jedi
+pexpect==4.8.0
+    # via ipython
+pickleshare==0.7.5
+    # via ipython
+pillow==10.0.0
+    # via turtget (pyproject.toml)
+platformdirs==3.10.0
+    # via jupyter-core
+prompt-toolkit==3.0.39
+    # via ipython
+psutil==5.9.5
+    # via ipykernel
+ptyprocess==0.7.0
+    # via pexpect
+pure-eval==0.2.2
+    # via stack-data
 pygments==2.15.1
-    # via sphinx
+    # via
+    #   ipython
+    #   sphinx
+python-dateutil==2.8.2
+    # via jupyter-client
+pyzmq==25.1.0
+    # via
+    #   ipykernel
+    #   jupyter-client
 requests==2.31.0
     # via sphinx
+six==1.16.0
+    # via
+    #   asttokens
+    #   python-dateutil
 snowballstemmer==2.2.0
     # via sphinx
 sphinx==7.1.1
@@ -44,5 +112,24 @@ sphinxcontrib-qthelp==1.0.3
     # via sphinx
 sphinxcontrib-serializinghtml==1.1.5
     # via sphinx
+stack-data==0.6.2
+    # via ipython
+tornado==6.3.2
+    # via
+    #   ipykernel
+    #   jupyter-client
+traitlets==5.9.0
+    # via
+    #   comm
+    #   ipykernel
+    #   ipython
+    #   ipywidgets
+    #   jupyter-client
+    #   jupyter-core
+    #   matplotlib-inline
 urllib3==2.0.4
     # via requests
+wcwidth==0.2.6
+    # via prompt-toolkit
+widgetsnbextension==4.0.8
+    # via ipywidgets

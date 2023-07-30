@@ -10,6 +10,7 @@ version = "2022.3.6.2"
 description = "IPywidgets-based turtle graphics"
 readme = "README.rst"
 authors = [{name = "Moshe Zadka", email = "moshez@zadka.club"}]
+dependencies = ["ipywidgets", "Pillow"]
 
 [project.optional-dependencies]
 tests = ["virtue", "pyhamcrest", "coverage"]

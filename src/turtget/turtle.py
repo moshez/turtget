@@ -1,10 +1,12 @@
+from __future__ import annotations
+from importlib import resources
 import dataclasses
+from typing import Tuple, Optional
 
 from PIL import Image
 
 def _get_turtle_icon() -> Image.Image:
-    package = resources.Package("turtget")
-    turtle = resources.files(package).joinpath("turtle.png")
+    turtle = resources.files("turtget").joinpath("turtle.png")
     raw_img = Image.open(turtle)
     return raw_img.resize((20, 20)).convert("RGBA")
 

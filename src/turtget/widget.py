@@ -2,7 +2,7 @@ import dataclasses
 
 from .world import World
 
-def redrawing(func):
+def _redrawing(func):
     def ret_value(self, *args, **kwargs):
         try:
             return func(self, *args, **kwargs)
@@ -12,10 +12,10 @@ def redrawing(func):
     return ret_value
 
 def _flip(attribute):
-    @drawing
+    @_redrawing
     def turn_on(self):
         setattr(self.world.turtle, attribute, True)
-    @drawing
+    @_redrawing
     def turn_off(self):
         setattr(self.world.turtle, attribute, False)
     return turn_on, turn_off
@@ -32,19 +32,19 @@ class Widget:
         self.world.redraw()
         return self.world.output
 
-    @redrawing    
+    @_redrawing    
     def turn(self, angle):
         self.world.turtle.turn(angle)
 
-    @redrawing    
+    @_redrawing    
     def forward(self, stride):
         self.world.move(stride)
 
-    @redrawing
+    @_redrawing
     def backward(self, stride):
         self.forward(-stride)
 
-    @redrawing
+    @_redrawing
     def reset(self):
         self.world.reset()
         
